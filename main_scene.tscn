@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://qa4f6ydrk2ji"]
+
+[ext_resource type="PackedScene" uid="uid://bujke4yoedx38" path="res://orb_yellow.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://d17dlr1cbjk8f" path="res://ball.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://cvytoot1v6xkv" path="res://orb_blue.tscn" id="2_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://dhphwfbofiqwb" path="res://orb_red.tscn" id="3_d5x1h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8mm7a"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d5x1h"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5x1h"]
+size = Vector2(20, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mm7a"]
+size = Vector2(1000, 20)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Ball" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(358, 171)
+physics_material_override = SubResource("PhysicsMaterial_8mm7a")
+gravity_scale = 0.0
+
+[node name="OrbYellow" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(244, 300)
+
+[node name="OrbBlue" parent="." instance=ExtResource("2_gyfs4")]
+position = Vector2(528, 293)
+
+[node name="OrbRed" parent="." instance=ExtResource("3_d5x1h")]
+position = Vector2(797, 292)
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_d5x1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(36, 296)
+shape = SubResource("RectangleShape2D_d5x1h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(1021, 296)
+shape = SubResource("RectangleShape2D_d5x1h")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(530, 7)
+shape = SubResource("RectangleShape2D_8mm7a")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(530, 590)
+shape = SubResource("RectangleShape2D_8mm7a")
